@@ -3,3 +3,6 @@ Upgrad.code-workspace
 Exercises/test.py
 Exercises/test.ipynb
 Exercises/Inferential Statistics - Powai Flats Rent.csv
+.venv
+.vscode
+
