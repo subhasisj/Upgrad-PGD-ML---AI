@@ -1,4 +1,4 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.pythonPath": "C:\\Users\\Subha\\.conda\\envs\\upgradpy\\python.exe"
+    "python.pythonPath": "env\\Scripts\\python.exe"
 }
