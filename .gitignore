@@ -12,3 +12,13 @@ Assignments/Bike-Sharing-Assignment/.ipynb_checkpoints
 Assignments/House-Price-Prediction/House_Price_Prediction_Assignment_SubhasisJethy.zip
 .vscode/settings.json
 .vscode/settings.json
+
+Deep Learning/CNN/data
+*env
+
+Miniconda3-latest-Linux-x86_64.sh
+.gitignore
+Deep Learning/data/mnist.pkl.gz
+.vscode/settings.json
+Assignments/Melanoma-Detection-CNN/Data
+Deep Learning/CNN/flowers-20210317T060850Z-001.zip
