@@ -22,3 +22,6 @@ Deep Learning/data/mnist.pkl.gz
 .vscode/settings.json
 Assignments/Melanoma-Detection-CNN/Data
 Deep Learning/CNN/flowers-20210317T060850Z-001.zip
+Assignments/Melanoma-Detection-CNN/skin_cancer_model_50_epoch.h5
+.gitignore
+Assignments/Melanoma-Detection-CNN/skin_cancer_model_50_epoch_reduced_lr.h5
