@@ -1,5 +1,5 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.pythonPath": "tensorflow_env\\Scripts\\python.exe",
+    "python.pythonPath": "env\\Scripts\\python.exe",
     "git.ignoreLimitWarning": true
 }
