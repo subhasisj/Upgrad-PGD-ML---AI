@@ -1,5 +1,5 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.pythonPath": "env\\Scripts\\python.exe",
+    "python.pythonPath": "C:\\Users\\Subha\\.conda\\envs\\upgradpy\\python.exe",
     "git.ignoreLimitWarning": true
 }
