@@ -26,6 +26,26 @@ class TicTacToe:
         Example: Input state- [1, 2, 3, 4, nan, nan, nan, nan, nan]
         Output = False"""
 
+        # check if any rows add up to 15
+        for i in range(3):
+            if (
+                curr_state[i * 3] + curr_state[i * 3 + 1] + curr_state[i * 3 + 2]
+            ) == 15:
+                return True
+
+        # check if any columns add up to 15
+        for i in range(3):
+            if (curr_state[i + 0] + curr_state[i + 3] + curr_state[i + 6]) == 15:
+                return True
+
+        # check if the diagonals add up to 15
+        if (curr_state[0] + curr_state[4] + curr_state[8]) == 15:
+            return True
+        if (curr_state[2] + curr_state[4] + curr_state[6]) == 15:
+            return True
+
+        return False
+
     def is_terminal(self, curr_state):
         # Terminal state could be winning state or when the board is filled up
 
@@ -77,7 +97,8 @@ class TicTacToe:
         """
 
         curr_state[curr_action[0]] = curr_action[1]
-        return curr_state
+        self.state = curr_state
+        return self.state
 
     def step(self, curr_state, curr_action):
         """Takes current state and action and returns the next state, reward and whether the state is terminal. Hint: First, check the board position after
