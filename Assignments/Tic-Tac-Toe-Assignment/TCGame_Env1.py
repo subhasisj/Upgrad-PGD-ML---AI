@@ -26,19 +26,45 @@ class TicTacToe:
         Example: Input state- [1, 2, 3, 4, nan, nan, nan, nan, nan]
         Output = False"""
 
-        # check if any rows add up to 15
+        # winning_pattern = [
+        #     (0, 1, 2),
+        #     (3, 4, 5),
+        #     (6, 7, 8),
+        #     (0, 3, 6),
+        #     (1, 4, 7),
+        #     (2, 5, 8),
+        #     (0, 4, 8),
+        #     (2, 4, 6),
+        # ]
+
+        # for pattern in winning_pattern:
+        #     if (
+        #         not np.isnan(curr_state[pattern[0]])
+        #         and not np.isnan(curr_state[pattern[1]])
+        #         and not np.isnan(curr_state[pattern[2]])
+        #     ):
+        #         pattern_state = (
+        #             curr_state[pattern[0]]
+        #             + curr_state[pattern[1]]
+        #             + curr_state[pattern[2]]
+        #         )
+        #         if pattern_state == 15:
+        #             return True
+        # return False
+
+        # check if there are rows that add to 15
         for i in range(3):
             if (
                 curr_state[i * 3] + curr_state[i * 3 + 1] + curr_state[i * 3 + 2]
             ) == 15:
                 return True
 
-        # check if any columns add up to 15
+        # check if there are columns that add to 15
         for i in range(3):
             if (curr_state[i + 0] + curr_state[i + 3] + curr_state[i + 6]) == 15:
                 return True
 
-        # check if the diagonals add up to 15
+        # check if the diagonals have sum 15
         if (curr_state[0] + curr_state[4] + curr_state[8]) == 15:
             return True
         if (curr_state[2] + curr_state[4] + curr_state[6]) == 15:
@@ -97,8 +123,7 @@ class TicTacToe:
         """
 
         curr_state[curr_action[0]] = curr_action[1]
-        self.state = curr_state
-        return self.state
+        return curr_state
 
     def step(self, curr_state, curr_action):
         """Takes current state and action and returns the next state, reward and whether the state is terminal. Hint: First, check the board position after
@@ -106,42 +131,27 @@ class TicTacToe:
         Example: Input state- [1, 2, 3, 4, nan, nan, nan, nan, nan], action- [7, 9] or [position, value]
         Output = ([1, 2, 3, 4, nan, nan, nan, 9, nan], -1, False)"""
 
-        reward = -1  # Default Reward
-        temp_state = self.state_transition(curr_state, curr_action)
-
-        final_state, game_status = self.is_terminal(temp_state)
+        final_state = False
+        intermediate_state = self.state_transition(curr_state, curr_action)
+        final_state, final_status = self.is_terminal(intermediate_state)
         if final_state == True:
-            if game_status == "Win":
+            if final_status == "Win":
                 reward = 10
             else:
                 reward = 0
-
-        # reward = get_reward_for_step(temp_state,reward)
         else:
-            # The game has not reached an end and environment will make a move now
-            env_action = random.choice(list(self.action_space(self.state)[1]))
-            temp_state = self.state_transition(
-                curr_state, env_action
-            )  # Update the temporary step after the action by env
-
-            # Check terminal status after action taken by environment
-            final_state, game_status = self.is_terminal(temp_state)
+            chosen_position = random.choice(self.allowed_positions(intermediate_state))
+            chosen_action = random.choice(self.allowed_values(intermediate_state)[1])
+            intermediate_state[chosen_position] = chosen_action
+            final_state, final_status = self.is_terminal(intermediate_state)
             if final_state == True:
-                if game_status == "Win":
-                    reward = 10
+                if final_status == "Win":
+                    reward = -10
                 else:
                     reward = 0
-
-        return temp_state, reward, final_state
-
-    # def get_reward_for_step(self, state,reward):
-    #     final_state, game_status = self.is_terminal(state)
-    #     if final_state == True:
-    #         if game_status == 'Win':
-    #             reward=10
-    #         else:
-    #             reward=0
-    #     return reward
+            else:
+                reward = -1
+        return intermediate_state, reward, final_state
 
     def reset(self):
         return self.state
