@@ -29,3 +29,6 @@ Assignments/Melanoma-Detection-CNN/skin_cancer_model_50_epoch_reduced_lr.h5
 Assignments/Gesture-Recognition-CaseStudy/model_init_*/*
 Assignments/Gesture-Recognition-CaseStudy/model_init_2021-05-2319_32_53.423896/model-00001-1.60772-0.21053-1.61193-0.12500.h5
 .vscode/settings.json
+Assignments/Cab-Driver-Profit-Optimization/*/model_weights.h5
+*.pkl
+*.pyc
