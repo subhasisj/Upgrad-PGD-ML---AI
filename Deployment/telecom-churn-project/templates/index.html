@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<body  align="center" style="background-color:green;">
+<head>
+  <meta charset="UTF-8">
+  <title>Model Deployment</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+        font-family: 'Tangerine', serif;
+        font-size: 28px;
+      }
+    </style>
+
+
+</head>
+
+<body>
+ <div class="login">
+	<h1 style="text-align:center">Churn Analytics</h1>
+
+    <form align="center" action="{{ url_for('predict')}}"method="post">
+    	<input type="text" style="text-align:center" name="total_ic_mou_8" placeholder="total_ic_mou_8" required="required" />
+        <br>
+        <input type="text" style="text-align:center" name="total_rech_amt_diff" placeholder="total_rech_amt_diff" required="required" />
+        <br>
+		<input type="text" style="text-align:center" name="total_og_mou_8" placeholder="total_og_mou_8" required="required" />
+        <br>
+        <input type="text" style="text-align:center" name="arpu_8" placeholder="arpu_8" required="required" />
+        <br>
+        <input type="text" style="text-align:center" name="roam_ic_mou_8" placeholder="roam_ic_mou_8" required="required" />
+        <br>
+		<input type="text" style="text-align:center" name="roam_og_mou_8" placeholder="roam_og_mou_8" required="required" />
+        <br>
+        <input type="text" style="text-align:center" name="std_ic_mou_8" placeholder="std_ic_mou_8" required="required" />
+        <br>
+        <input type="text" style="text-align:center" name="av_rech_amt_data_8" placeholder="av_rech_amt_data_8" required="required" />
+        <br>
+		<input type="text" style="text-align:center" name="std_og_mou_8" placeholder="std_og_mou_8" required="required" />
+        <br>
+
+
+        <button align="center" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+     {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
